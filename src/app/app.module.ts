@@ -6,6 +6,7 @@ import { AgmCoreModule } from '@agm/core';
 import {environment} from '../environments/environment';
 
 import { AppComponent } from './app.component';
+import { PointsOfAttentionService } from './points-of-attention.service';
 
 
 @NgModule({
@@ -20,7 +21,9 @@ import { AppComponent } from './app.component';
       apiKey: environment.mapsAPIKey
     })
   ],
-  providers: [],
+  providers: [
+     PointsOfAttentionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

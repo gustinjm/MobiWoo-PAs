@@ -4,10 +4,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import {environment} from '../environments/environment';
+import { HttpModule, XHRBackend } from '@angular/http';
+
 
 import { AppComponent } from './app.component';
 import { PointsOfAttentionService } from './points-of-attention.service';
-
+import { MockXHRBackend } from './mock-xhr-backend';
 
 @NgModule({
   declarations: [
@@ -15,14 +17,16 @@ import { PointsOfAttentionService } from './points-of-attention.service';
   ],
   imports: [
     BrowserModule,
-       CommonModule,
+    CommonModule,
     FormsModule,
     AgmCoreModule.forRoot({
       apiKey: environment.mapsAPIKey
-    })
+    }),
+    HttpModule
   ],
   providers: [
-     PointsOfAttentionService
+     PointsOfAttentionService,
+     { provide: XHRBackend, useClass: MockXHRBackend }
   ],
   bootstrap: [AppComponent]
 })

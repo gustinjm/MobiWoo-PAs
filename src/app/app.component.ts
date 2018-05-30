@@ -11,13 +11,23 @@ export class AppComponent {
   lat = 50.71649048645257;
   lng = 4.397471272631947;
   zoom = 13;
+  category = '';
   
-  pAItems;
+  
+  pAItems = [];
   
   constructor(private pointsOfAttentionService: PointsOfAttentionService) {}
   
    ngOnInit() {
-    this.pAItems = this.pointsOfAttentionService.get();
+    this.getPointsOfAttentionService(this.category);
+  }
+  
+    getPointsOfAttentionService(category) {
+    this.category = category;
+    this.pointsOfAttentionService.get(category)
+      .subscribe(paItems => {
+        this.pAItems = paItems;
+      });
   }
   
 }

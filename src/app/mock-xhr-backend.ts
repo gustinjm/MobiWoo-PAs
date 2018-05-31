@@ -1,37 +1,37 @@
-import { Request, Response, ResponseOptions, RequestMethod } from '@angular/http';
-import {Observable, Observer} from 'rxjs';
+import { HttpEvent, HttpRequest, HttpResponse } from '@angular/common/http';
+import { Observable, Observer } from 'rxjs';
+import { HttpBackend } from '@angular/common/http/src/backend';
 
-export class MockXHRBackend {
-  constructor() {
-  }
-
-  createConnection(request: Request) {
-    var response = new Observable((responseObserver: Observer<Response>) => {
-      var responseOptions;
-      if (request.url.indexOf('pointsOfAttention?category=') >= 0 || request.url === 'pointsOfAttention') {
-      	var category;
-        if (request.url.indexOf('?') >= 0) {
-           category = request.url.split('=')[1];
+export class MockXHRBackend implements HttpBackend {
+  handle(request: HttpRequest<any>): Observable<HttpEvent<any>> {
+    return new Observable((responseObserver: Observer<HttpResponse<any>>) => {
+      let responseOptions;
+      if (request.urlWithParams.indexOf('pointsOfAttention?category=') >= 0 || request.url === 'pointsOfAttention') {
+      	let category;
+        if (request.urlWithParams.indexOf('?') >= 0) {
+           category = request.urlWithParams.split('=')[1];
            if (category === 'undefined') category = '';
         }
-        var pAItems;
+        let pAItems;
         if (category) {
            pAItems = this._pAItems.filter(paItem => paItem.category === category);
          } else {
            pAItems = this._pAItems;
          }
-         responseOptions = new ResponseOptions({
-            body: { paItems: JSON.parse(JSON.stringify(pAItems)) },
+         responseOptions ={
+            body: { pAItems: JSON.parse(JSON.stringify(pAItems)) },
             status: 200
-         });
-      } 
-      var responseObject = new Response(responseOptions);
+         };
+      }
+      const responseObject = new HttpResponse(responseOptions);
       responseObserver.next(responseObject);
       responseObserver.complete();
-      return () => { };
-    });
-    return { response };
+      return () => {
+      };
+    }); 
   }
+     
+  
 
   _pAItems = [{
     id: 67,

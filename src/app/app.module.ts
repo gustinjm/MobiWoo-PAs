@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import {environment} from '../environments/environment';
-import { HttpModule, XHRBackend } from '@angular/http';
+import { HttpClientModule, HttpXhrBackend } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -22,11 +22,11 @@ import { MockXHRBackend } from './mock-xhr-backend';
     AgmCoreModule.forRoot({
       apiKey: environment.mapsAPIKey
     }),
-    HttpModule
+    HttpClientModule
   ],
   providers: [
      PointsOfAttentionService,
-     { provide: XHRBackend, useClass: MockXHRBackend }
+     { provide: HttpXhrBackend, useClass: MockXHRBackend }
   ],
   bootstrap: [AppComponent]
 })

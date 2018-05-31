@@ -1,23 +1,37 @@
 import { Injectable } from '@angular/core';
-import { Http, URLSearchParams } from '@angular/http';
+import { HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { map } from "rxjs/operators";
 
 @Injectable()
 export class PointsOfAttentionService {
- constructor(private http: Http) {}
+ constructor(private http: HttpClient) {}
 
   get(category) {
-    let searchParams = new URLSearchParams();
-    searchParams.append('category', category);
-    var responseObservable = this.http.get('pointsOfAttention', { search: searchParams });
-    return responseObservable
+    let getOptions = {
+      params: { category }
+    };
+    return this.http.get<PointsOfAttentionResponse>('pointsOfAttention', getOptions)
       .pipe(	
       	map(
-      		response => { 
-      		  return response.json().paItems; 
+      		(response : PointsOfAttentionResponse) => { 
+      		  return response.pAItems; 
       		}
       	));
   }
-  
 }
+ 
+
+ interface PointsOfAttentionResponse {
+  pAItems: PointOfAttention[]
+}
+
+interface PointOfAttention {
+  id: number;
+  lat: number;
+  lng: number;
+  description: string;
+  category: string;
+  iconUrl: string;
+}
+

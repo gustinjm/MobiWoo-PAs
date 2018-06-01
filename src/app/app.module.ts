@@ -11,10 +11,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { PointsOfAttentionService } from './points-of-attention.service';
 import { MockXHRBackend } from './mock-xhr-backend';
+import { PaCategoryComponent } from './pa-category/pa-category.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PaCategoryComponent
   ],
   imports: [
     BrowserModule,

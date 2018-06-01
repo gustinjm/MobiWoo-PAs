@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import { PointsOfAttentionService } from './points-of-attention.service';
+import { PointsOfAttentionMetadataService } from './pa-metadata.service';
+
 
 @Component({
   selector: 'app-root',
@@ -8,26 +10,37 @@ import { PointsOfAttentionService } from './points-of-attention.service';
 })
 export class AppComponent {
   title = 'MobiWoo PAs map';
-  lat = 50.71649048645257;
-  lng = 4.397471272631947;
+  lat = null;
+  lng =  null;
   zoom = 13;
   category = '';
-  
-  
   pAItems = [];
+  categories = [];
   
-  constructor(private pointsOfAttentionService: PointsOfAttentionService) {}
+  constructor(private pointsOfAttentionService: PointsOfAttentionService, 
+              private paMetaDataService: PointsOfAttentionMetadataService) {}
   
    ngOnInit() {
     this.getPointsOfAttentionService(this.category);
+    this.getPAMetaData();
   }
   
     getPointsOfAttentionService(category) {
     this.category = category;
-    this.pointsOfAttentionService.get(category)
-      .subscribe(paItems => {
-        this.pAItems = paItems;
+    this.pointsOfAttentionService.get(category.name)
+      .subscribe(pAMap => {
+        this.pAItems = pAMap.pAItems;
+        this.lat = pAMap.lat;
+        this.lng = pAMap.lng;
       });
   }
+
+  getPAMetaData() {
+    this.paMetaDataService.get()
+      .subscribe(paCategories => {
+        this.categories = paCategories;
+      });
+  }
+
   
 }

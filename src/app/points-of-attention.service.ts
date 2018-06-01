@@ -15,7 +15,7 @@ export class PointsOfAttentionService {
       .pipe(	
       	map(
       		(response : PointsOfAttentionResponse) => { 
-      		  return response.pAItems; 
+      		  return response.pAMap; 
       		}
       	));
   }
@@ -23,7 +23,13 @@ export class PointsOfAttentionService {
  
 
  interface PointsOfAttentionResponse {
-  pAItems: PointOfAttention[]
+  pAMap : PointOfAttentionMap 
+}
+
+interface PointOfAttentionMap {
+  lat: number;
+  lng: number;
+  pAItems: PointOfAttention[];
 }
 
 interface PointOfAttention {

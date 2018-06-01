@@ -7,33 +7,70 @@ export class MockXHRBackend implements HttpBackend {
     return new Observable((responseObserver: Observer<HttpResponse<any>>) => {
       let responseOptions;
       if (request.urlWithParams.indexOf('pointsOfAttention?category=') >= 0 || request.url === 'pointsOfAttention') {
-      	let category;
+        let category;
         if (request.urlWithParams.indexOf('?') >= 0) {
            category = request.urlWithParams.split('=')[1];
            if (category === 'undefined') category = '';
         }
-        let pAItems;
+        let filteredPAItems;
         if (category) {
-           pAItems = this._pAItems.filter(paItem => paItem.category === category);
+          filteredPAItems = this._pAItems.filter(paItem => paItem.category === category);
          } else {
-           pAItems = this._pAItems;
+          filteredPAItems = this._pAItems;
+         }
+         let pAMap = {
+          lat: this._pAMap.lat,
+          lng: this._pAMap.lng,
+          pAItems: filteredPAItems
          }
          responseOptions ={
-            body: { pAItems: JSON.parse(JSON.stringify(pAItems)) },
+            body: { pAMap: JSON.parse(JSON.stringify(pAMap)) },
             status: 200
          };
       }
+      else if (request.url === 'paMetaData') {
+        responseOptions ={
+          body: { paCategories: JSON.parse(JSON.stringify(this._paCategories)) },
+          status: 200
+       };
+    }
       const responseObject = new HttpResponse(responseOptions);
       responseObserver.next(responseObject);
       responseObserver.complete();
       return () => {
       };
     }); 
-  }
-     
-  
 
-  _pAItems = [{
+  }
+  
+   _paCategories = [{
+    name: '',
+    description: 'All',
+    iconUrl: '../assets/grey-dot.png'
+  },
+  {
+    name: 'green',
+    description: 'Solved',
+    iconUrl: '../assets/green-dot.png'
+  },
+  {
+    name: 'orange',
+    description: 'Nice to have',
+    iconUrl: '../assets/orange-dot.png'
+  },
+  {
+    name: 'red',
+    description: 'Critical',
+    iconUrl: '../assets/red-dot.png'
+  }
+];
+
+_pAMap = {
+    lat: 50.71649048645257,
+    lng: 4.397471272631947
+}
+
+_pAItems = [{
     id: 67,
     lat: 50.713600296946,
     lng: 4.399800458722,

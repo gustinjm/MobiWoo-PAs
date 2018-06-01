@@ -4,6 +4,20 @@
     Welcome to {{ title }}!
   </h1>
 </div>
+<nav>
+  <a (click)="getPointsOfAttentionService('')">
+      <img src="../assets/grey-dot.png" class="icon" />
+  </a>
+  <a (click)="getPointsOfAttentionService('green')">
+    <img src="../assets/green-dot.png" class="icon" />
+  </a>
+  <a (click)="getPointsOfAttentionService('orange')">
+    <img src="../assets/orange-dot.png" class="icon" />
+  </a>
+  <a (click)="getPointsOfAttentionService('red')">
+    <img src="../assets/red-dot.png" class="icon" />
+  </a>
+</nav>
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">

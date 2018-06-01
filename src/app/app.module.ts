@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import {environment} from '../environments/environment';
 import { HttpClientModule, HttpXhrBackend } from '@angular/common/http';
-
+import { MatTooltipModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { PointsOfAttentionService } from './points-of-attention.service';
@@ -22,7 +23,9 @@ import { MockXHRBackend } from './mock-xhr-backend';
     AgmCoreModule.forRoot({
       apiKey: environment.mapsAPIKey
     }),
-    HttpClientModule
+    HttpClientModule,
+    MatTooltipModule,
+    BrowserAnimationsModule
   ],
   providers: [
      PointsOfAttentionService,

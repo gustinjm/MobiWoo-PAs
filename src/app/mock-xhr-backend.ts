@@ -45,23 +45,28 @@ export class MockXHRBackend implements HttpBackend {
   
    _paCategories = [{
     name: '',
-    description: 'All',
-    iconUrl: '../assets/grey-dot.png'
+    description: 'Tous',
+    iconUrl: '../assets/white_circle.png'
   },
   {
     name: 'green',
-    description: 'Solved',
-    iconUrl: '../assets/green-dot.png'
+    description: 'Résolu',
+    iconUrl: '../assets/green.png'
   },
   {
     name: 'orange',
-    description: 'Nice to have',
-    iconUrl: '../assets/orange-dot.png'
+    description: 'Souhaité',
+    iconUrl: '../assets/orange.png'
   },
   {
     name: 'red',
-    description: 'Critical',
-    iconUrl: '../assets/red-dot.png'
+    description: 'Urgent',
+    iconUrl: '../assets/red.png'
+  },
+  {
+    name: 'yellox',
+    description: 'Récurrent',
+    iconUrl: '../assets/yellow.png'
   }
 ];
 
@@ -76,7 +81,7 @@ _pAItems = [{
     lng: 4.399800458722,
     description: 'Passage pour piétons rue du Gaz',
     category: 'orange',
-    iconUrl: '/assets/orange-dot.png'
+    iconUrl: '/assets/orange.png'
   },
   {
     id: 61,
@@ -84,7 +89,7 @@ _pAItems = [{
     lng: 4.398852645368947,
     description: 'Trottoir Boulevard H. Rolin, en face du Delhaize',
     category: 'red',
-    iconUrl: '/assets/red-dot.png'
+    iconUrl: '/assets/red.png'
   },
   {
     id: 55,  
@@ -92,7 +97,7 @@ _pAItems = [{
     lng: 4.3714322,
     description: 'Chemin des Postes (entre la rue St Germain et la rue des Piles)',
     category: 'orange',
-    iconUrl: '/assets/orange-dot.png'
+    iconUrl: '/assets/orange.png'
   },
   {
     id: 1,  
@@ -100,7 +105,7 @@ _pAItems = [{
     lng: 4.3845587142334,
     description: 'Au croisement de la drève du Garde et du Sentier de Rhode-St-Genèse',
     category: 'green',
-    iconUrl: '/assets/green-dot.png'
+    iconUrl: '/assets/green.png'
   }
   ];
 }

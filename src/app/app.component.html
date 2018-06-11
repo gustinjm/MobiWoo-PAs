@@ -9,11 +9,12 @@
 </nav>
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" #gm>
   <agm-marker *ngFor="let pAItem of pAItems" [latitude]="pAItem.lat" [longitude]="pAItem.lng"
       [iconUrl]="pAItem.iconUrl" (mouseOver)="showToolTip(pAItem, $event)" 
-        (mouseOut)="hideToolTip(pAItem, $event)" matTooltip="{{ pAItem.description }}" >
-  		<agm-info-window >
+        (mouseOut)="hideToolTip(pAItem, $event)"  
+        (markerClick)="tmp=gm.lastOpen;gm.lastOpen=infoWindow;tmp?.close();">
+  		<agm-info-window #infoWindow>
             <div class="infoWindowtitle">{{ pAItem.description}}</div>
             <div class="egm-marker-iw" >
               <p>

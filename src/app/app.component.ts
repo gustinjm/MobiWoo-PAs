@@ -1,7 +1,10 @@
 import {Component} from '@angular/core';
 import { PointsOfAttentionService } from './points-of-attention.service';
-import { PointsOfAttentionMetadataService } from './pa-metadata.service';
+import { PointsOfAttentionMetadataService} from './pa-metadata.service';
+import { PointOfAttention} from './point-of-attention';
+import { MatTooltip } from '@angular/material';
 
+import { AgmInfoWindow } from  '@agm/core';
 
 @Component({
   selector: 'app-root',
@@ -41,6 +44,12 @@ export class AppComponent {
         this.categories = paCategories;
       });
   }
-
   
+  showToolTip(m: PointOfAttention, $event: MouseEvent) {
+    console.log("showToolTip", m.description, $event);
+  }
+
+  hideToolTip(m: PointOfAttention, $event: MouseEvent) {
+    console.log("hideToolTip", m.description, $event);
+  }
 }

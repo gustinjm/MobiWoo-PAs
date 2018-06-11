@@ -11,7 +11,14 @@
 <!-- the component as the initial center of the map: -->
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
   <agm-marker *ngFor="let pAItem of pAItems" [latitude]="pAItem.lat" [longitude]="pAItem.lng"
-      [iconUrl]="pAItem.iconUrl">
-  		<agm-info-window>{{ pAItem.description}}</agm-info-window>
+      [iconUrl]="pAItem.iconUrl" (mouseOver)="showToolTip(pAItem, $event)" 
+        (mouseOut)="hideToolTip(pAItem, $event)" matTooltip="{{ pAItem.description }}" >
+  		<agm-info-window >
+            <div class="infoWindowtitle">{{ pAItem.description}}</div>
+            <div class="egm-marker-iw" >
+              <p>
+                <a href="{{ pAItem.infoUrl }}"><span [innerHTML]="pAItem.infoUrl"></span></a>             </p>
+              </div>
+        </agm-info-window>
   </agm-marker>
 </agm-map>

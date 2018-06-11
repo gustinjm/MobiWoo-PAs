@@ -18,6 +18,7 @@
 *.sublime-workspace
 # ?
 .editorconfig
+/.history
 
 
 # IDE - VSCode

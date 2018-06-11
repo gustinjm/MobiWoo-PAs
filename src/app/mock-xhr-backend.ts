@@ -64,7 +64,7 @@ export class MockXHRBackend implements HttpBackend {
     iconUrl: '../assets/red.png'
   },
   {
-    name: 'yellox',
+    name: 'yellow',
     description: 'Récurrent',
     iconUrl: '../assets/yellow.png'
   }
@@ -81,7 +81,8 @@ _pAItems = [{
     lng: 4.399800458722,
     description: 'Passage pour piétons rue du Gaz',
     category: 'orange',
-    iconUrl: '/assets/orange.png'
+    iconUrl: '/assets/orange.png',
+    infoUrl: 'http://mobiwoo.be/index.php/2018/02/19/rue-du-gaz/'
   },
   {
     id: 61,
@@ -89,7 +90,8 @@ _pAItems = [{
     lng: 4.398852645368947,
     description: 'Trottoir Boulevard H. Rolin, en face du Delhaize',
     category: 'red',
-    iconUrl: '/assets/red.png'
+    iconUrl: '/assets/red.png',
+    infoUrl: 'http://mobiwoo.be/index.php/2017/03/21/trottoir-boulevard-h-rolin-en-face-du-delhaize/'
   },
   {
     id: 55,  
@@ -97,8 +99,9 @@ _pAItems = [{
     lng: 4.3714322,
     description: 'Chemin des Postes (entre la rue St Germain et la rue des Piles)',
     category: 'orange',
-    iconUrl: '/assets/orange.png'
-  },
+    iconUrl: '/assets/orange.png',
+    infoUrl: 'http://mobiwoo.be/index.php/2017/02/19/chemin-des-postes-entre-la-rue-st-germain-et-la-rue-des-piles/'
+   },
   {
     id: 1,  
     lat: 50.72170274313,

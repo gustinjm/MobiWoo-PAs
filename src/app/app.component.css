@@ -1,4 +1,10 @@
 agm-map {
-  height: 300px;
-  width: 400px;
+  height: 400px;
+  width: 600px;
+}
+
+.infoWindowtitle{
+  color: rgb(165, 42, 42); 
+  line-height: 24px; 
+  font-size: 19px;
 }

@@ -3,6 +3,8 @@ import { HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { map } from "rxjs/operators";
 
+import { PointOfAttention} from './point-of-attention';
+
 @Injectable()
 export class PointsOfAttentionService {
  constructor(private http: HttpClient) {}
@@ -19,10 +21,10 @@ export class PointsOfAttentionService {
       		}
       	));
   }
-}
- 
 
- interface PointsOfAttentionResponse {
+}
+
+interface PointsOfAttentionResponse {
   pAMap : PointOfAttentionMap 
 }
 
@@ -32,12 +34,8 @@ interface PointOfAttentionMap {
   pAItems: PointOfAttention[];
 }
 
-interface PointOfAttention {
-  id: number;
-  lat: number;
-  lng: number;
-  description: string;
-  category: string;
-  iconUrl: string;
-}
+
+ 
+
+
 

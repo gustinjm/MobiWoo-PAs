@@ -10,7 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { PointsOfAttentionService } from './points-of-attention.service';
-import { MockXHRBackend } from './mock-xhr-backend';
+import { PointsOfAttentionMetadataService } from './pa-metadata.service';
+//import { MockXHRBackend } from './mock-xhr-backend';
 import { PaCategoryComponent } from './pa-category/pa-category.component';
 
 @NgModule({
@@ -31,7 +32,8 @@ import { PaCategoryComponent } from './pa-category/pa-category.component';
   ],
   providers: [
      PointsOfAttentionService,
-     { provide: HttpXhrBackend, useClass: MockXHRBackend }
+     PointsOfAttentionMetadataService
+//     { provide: HttpXhrBackend, useClass: MockXHRBackend }
   ],
   bootstrap: [AppComponent]
 })

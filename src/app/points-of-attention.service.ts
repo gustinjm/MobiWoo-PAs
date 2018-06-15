@@ -1,41 +1,54 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { map } from "rxjs/operators";
 
-import { PointOfAttention} from './point-of-attention';
+import { PointOfAttention } from './point-of-attention';
 
 @Injectable()
 export class PointsOfAttentionService {
- constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  get(category) {
-    let getOptions = {
-      params: { category }
-    };
-    return this.http.get<PointsOfAttentionResponse>('pointsOfAttention', getOptions)
-      .pipe(	
-      	map(
-      		(response : PointsOfAttentionResponse) => { 
-      		  return response.pAMap; 
-      		}
-      	));
+
+  getPointsOfAttentionByCategory(category) {
+    return this.http.get(POINTS_OF_ATTENTION_URL)
+      .pipe(
+        map(
+          (response: PointsOfAttentionMap) => {
+            let items = response.paItems;
+            let filteredPAItems;
+            if (category) {
+              filteredPAItems = items.filter(paItem => paItem.category === category);
+            } else {
+              filteredPAItems = items;
+            }
+            return filteredPAItems;
+          }
+        ));
+  }
+
+  getPAMap() {
+    return this.http.get(POINTS_OF_ATTENTION_URL)
+      .pipe(
+        map(
+          (response: PointsOfAttentionMap) => {
+            return response;
+          }
+        ));
   }
 
 }
 
-interface PointsOfAttentionResponse {
-  pAMap : PointOfAttentionMap 
-}
-
-interface PointOfAttentionMap {
+interface PointsOfAttentionMap {
   lat: number;
   lng: number;
-  pAItems: PointOfAttention[];
+  paItems: PointOfAttention[]
 }
 
+const POINTS_OF_ATTENTION_URL = 'assets/pa-items.json';
 
- 
+
+
 
 
 

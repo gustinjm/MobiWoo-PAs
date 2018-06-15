@@ -1,0 +1,50 @@
+{
+    "lat": 50.71649048645257,
+    "lng": 4.397471272631947,
+    "paItems": 
+[{
+    "id": 67,
+    "lat": 50.713600296946,
+    "lng": 4.399800458722,
+    "description": "Passage pour piétons rue du Gaz",
+    "category": "orange",
+    "iconUrl": "/assets/orange.png",
+    "infoUrl": "http://mobiwoo.be/index.php/2018/02/19/rue-du-gaz/"
+  },
+  {
+    "id": 61,
+    "lat": 50.71173294994551,
+    "lng": 4.398852645368947,
+    "description": "Trottoir Boulevard H. Rolin, en face du Delhaize",
+    "category": "yellow",
+    "iconUrl": "/assets/yellow.png",
+    "infoUrl": "http://mobiwoo.be/index.php/2017/03/21/trottoir-boulevard-h-rolin-en-face-du-delhaize/"
+  },
+  {
+    "id": 55,  
+    "lat": 50.7069934,
+    "lng": 4.3714322,
+    "description": "Chemin des Postes (entre la rue St Germain et la rue des Piles)",
+    "category": "orange",
+    "iconUrl": "/assets/orange.png",
+    "infoUrl": "http://mobiwoo.be/index.php/2017/02/19/chemin-des-postes-entre-la-rue-st-germain-et-la-rue-des-piles/"
+   },
+  {
+    "id": 1,  
+    "lat": 50.72170274313,
+    "lng": 4.3845587142334,
+    "description": "Au croisement de la drève du Garde et du Sentier de Rhode-St-Genèse",
+    "category": "green",
+    "iconUrl": "/assets/green.png"
+  },
+  {
+    "id": 66,
+    "lat": 50.695565,
+    "lng":	4.4068897,
+    "description": "Piste cyclable Rue de la Paix",
+    "category": "red",
+    "infoUrl": "http://mobiwoo.be/index.php/2017/03/28/piste-cyclable-rue-de-la-paix",
+    "iconUrl": "/assets/red.png"
+  }
+  ]
+}

@@ -5,7 +5,7 @@
   </h1>
 </div>
 <nav>
-    <pa-category *ngFor="let category of categories" [category]="category" (selectCategory)="getPointsOfAttentionService($event)"></pa-category>
+    <pa-category *ngFor="let category of categories" [category]="category" (selectCategory)="getPointsOfAttentionByCategory($event)"></pa-category>
 </nav>
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->

@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { PointsOfAttentionService } from './points-of-attention.service';
-import { PointsOfAttentionMetadataService} from './pa-metadata.service';
-import { PointOfAttention} from './point-of-attention';
+import { PointsOfAttentionMetadataService } from './pa-metadata.service';
+import { PointOfAttention } from './point-of-attention';
 import { MatTooltip } from '@angular/material';
 
-import { AgmInfoWindow } from  '@agm/core';
+import { AgmInfoWindow } from '@agm/core';
 
 @Component({
   selector: 'app-root',
@@ -14,28 +14,37 @@ import { AgmInfoWindow } from  '@agm/core';
 export class AppComponent {
   title = 'MobiWoo PAs map';
   lat = null;
-  lng =  null;
+  lng = null;
   zoom = 13;
   category = '';
   pAItems = [];
   categories = [];
-  
-  constructor(private pointsOfAttentionService: PointsOfAttentionService, 
-              private paMetaDataService: PointsOfAttentionMetadataService) {}
-  
-   ngOnInit() {
-    this.getPointsOfAttentionService(this.category);
+
+  constructor(private pointsOfAttentionService: PointsOfAttentionService,
+    private paMetaDataService: PointsOfAttentionMetadataService) { }
+
+  ngOnInit() {
+    this.getPAMap();
     this.getPAMetaData();
   }
-  
-    getPointsOfAttentionService(category) {
+
+  getPointsOfAttentionByCategory(category) {
     this.category = category;
-    this.pointsOfAttentionService.get(category.name)
+    this.pointsOfAttentionService.getPointsOfAttentionByCategory(category.name)
+      .subscribe(pAItems => {
+        this.pAItems = pAItems;
+      }
+      );
+  }
+
+  getPAMap() {
+    this.pointsOfAttentionService.getPAMap()
       .subscribe(pAMap => {
-        this.pAItems = pAMap.pAItems;
+        this.pAItems = pAMap.paItems;
         this.lat = pAMap.lat;
         this.lng = pAMap.lng;
-      });
+      }
+      );
   }
 
   getPAMetaData() {
@@ -44,7 +53,7 @@ export class AppComponent {
         this.categories = paCategories;
       });
   }
-  
+
   showToolTip(m: PointOfAttention, $event: MouseEvent) {
     console.log("showToolTip", m.description, $event);
   }

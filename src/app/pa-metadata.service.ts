@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
 import { map } from "rxjs/operators";
 
 
@@ -12,18 +11,14 @@ export class PointsOfAttentionMetadataService {
   constructor(private http: HttpClient) { }
 
   get() {
-    return this.http.get<PaMetaDataResponse>('paMetaData')
+    return this.http.get('assets/pa-categories.json')
       .pipe(	
       	map(
-      		(response : PaMetaDataResponse) => { 
-      		  return response.paCategories; 
+      		(response : PointOfAttentionCategory[]) => { 
+      		  return response; 
       		}
       	));
   }
-}
-
-interface PaMetaDataResponse {
-  paCategories: PointOfAttentionCategory[]; 
 }
 
 interface PointOfAttentionCategory {

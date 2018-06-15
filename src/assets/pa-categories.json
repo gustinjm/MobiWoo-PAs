@@ -1,0 +1,26 @@
+[{
+    "name": "",
+    "description": "Tous",
+    "iconUrl": "../assets/white_circle.png"
+  },
+  {
+    "name": "green",
+    "description": "Résolu",
+    "iconUrl": "../assets/green.png"
+  },
+  {
+    "name": "orange",
+    "description": "Souhaité",
+    "iconUrl": "../assets/orange.png"
+  },
+  {
+    "name": "red",
+    "description": "Urgent",
+    "iconUrl": "../assets/red.png"
+  },
+  {
+    "name": "yellow",
+    "description": "Récurrent",
+    "iconUrl": "../assets/yellow.png"
+  }
+]

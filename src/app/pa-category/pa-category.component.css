@@ -2,3 +2,11 @@
 .description {
     padding-right: 15px;
 }
+
+.selected-icon {
+    background-color: black;
+  }
+
+  .icon {
+    background-color: white;
+  }  

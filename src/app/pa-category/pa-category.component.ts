@@ -7,6 +7,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class PaCategoryComponent {
   @Input() category;
+  @Input() selected;
   @Output() selectCategory = new EventEmitter();
 
   onSelectCategory() {

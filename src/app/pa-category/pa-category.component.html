@@ -1,5 +1,5 @@
 <a (click)="onSelectCategory()">
-    <img src="{{ category.iconUrl}}" class="icon" matTooltip="{{ category.description}}"/>
+    <img src="{{ category.iconUrl}}" [class.selected-icon]="selected" [class.icon]="!selected" matTooltip="{{ category.description}}"/>
 </a>
 <strong class="description">{{ category.description}}</strong>
 

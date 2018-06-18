@@ -16,7 +16,7 @@ export class AppComponent {
   lat = null;
   lng = null;
   zoom = 13;
-  category = '';
+  category;
   pAItems = [];
   categories = [];
 
@@ -28,7 +28,11 @@ export class AppComponent {
     this.getPAMetaData();
   }
 
-  getPointsOfAttentionByCategory(category) {
+  isSelected(category){
+    return this.category === category;
+  }
+
+  selectCategory(category) {
     this.category = category;
     this.pointsOfAttentionService.getPointsOfAttentionByCategory(category.name)
       .subscribe(pAItems => {
@@ -51,6 +55,7 @@ export class AppComponent {
     this.paMetaDataService.get()
       .subscribe(paCategories => {
         this.categories = paCategories;
+        this.category = paCategories[0];
       });
   }
 
